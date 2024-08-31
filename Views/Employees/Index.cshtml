@@ -1,0 +1,37 @@
+﻿@{
+    Layout = "_Layout";
+}
+@model IEnumerable<Employee>
+@if (ViewBag.UserName != null)
+{
+    <p>Welcome, @ViewBag.FullName (@ViewBag.UserName)</p>
+}
+
+<a href="/Employees/Create" class="btn btn-outline-danger">New </a>
+<h1>All Employees</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <td>@Html.DisplayNameFor(x => x.Id)</td>
+            <td>@Html.DisplayNameFor(x => x.Name)</td>
+            <td>@Html.DisplayNameFor(x => x.Email)</td>
+            <td>@Html.DisplayNameFor(x => x.Password)</td>
+            <td>Action</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.Id</td>
+                <td>@x.Name</td>
+                <td>@x.Email</td>
+                <td>@x.Password</td>
+                <td>
+                    <a asp-action="Delete" asp-controller="Employees" asp-route-id="@x.Id">Delete </a>
+                    <a asp-action="Edit" asp-controller="Employees" asp-route-id="@x.Id">Edit </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

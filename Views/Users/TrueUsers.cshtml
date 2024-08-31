@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewData["Title"] = "TrueUsers";
+}
+
+
+@model List<User>
+<h1>User Table is Active  </h1>
+<a asp-action="DisplayUsers" asp-controller="Users" class=" ">
+    Users is InActive
+</a>
+<table class="table">
+    <thead>
+        <tr>
+            <td>UserId</td>
+            <td>UserName</td>
+            <td>Password</td>
+            <td>IsActive</td>
+            <td>CreatedAt</td>
+            <td>Status</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.UserId</td>
+                <td>@x.UserName</td>
+                <td>@x.Password</td>
+                <td>@x.IsActive</td>
+                <td>@x.Created.</td>
+                <td><a asp-controller="Users" asp-action="IsActivea" asp-route-UserId=@x.UserId class="btn btn-success">IsActive</a></td>
+            </tr>
+        }
+    </tbody>
+
+
+
+</table>
+
